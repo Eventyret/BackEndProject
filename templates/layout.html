@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/dc.css') }}">
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/custom.css') }}">
+    <title>{% block title %}{% endblock %} - by Simen Daehlin</title>
+    {% endblock %}
+  </head>
+  <body>
+    {% include "nav.html" %}
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>.
+      {% endblock %}
+    </div>
+    <script src="{{ url_for('.static', filename='js/jquery-3.2.1.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/d3.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/crossfilter.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/dc.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/intro.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/custom.js') }}"></script>
+  </body>
+</html>
