@@ -13,13 +13,7 @@ COLLECTION_NAME = 'projects'
 FIELDS = {
     '_id': True,
     'MovieName': True,
-    'Genre1': True,
-    'Genre2': True,
-    'Genre3': True,
-    'Genre4': True,
-    'Genre5': True,
-    'Genre6': True
-
+    'Genre': True
 }
 
 # For auto Reloading
@@ -53,3 +47,4 @@ if __name__== '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     print "Server Running"
     app.run(debug=True)
+    

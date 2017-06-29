@@ -25,7 +25,10 @@ function(err, data) {
   if (err != null) {
     alert('Something went wrong: ' + err);
   } else {
-    // console.log(data.length); // For debugging
+    var genre = data.genre;
+        window.data = data; // For debugging
     document.getElementById("entryamount").innerHTML = data.length;
+    document.getElementById("entryGenres").innerHTML = genre;
+    
   }
 });
