@@ -26,12 +26,6 @@ def about():
 @app.route('/overview')
 def overview():
     return render_template('overview.html')
-@app.route('/movie')
-def movie():
-    return render_template('movie.html')
-@app.route('/movies')
-def movies():
-    return render_template('movies.html')
 @app.route('/api/data/data.json')
 def apidata():
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
