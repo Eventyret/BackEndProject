@@ -25,8 +25,9 @@ function(err, data) {
   if (err != null) {
     alert('Something went wrong: ' + err);
   } else {
-    window.data = data; // For debugging
     document.getElementById("entryamount").innerHTML = data.length;
-    
+    document.getElementById("entryGenres").innerHTML = data."Genre";
+    console.log(data."Genre");
+    return data;
   }
 });
