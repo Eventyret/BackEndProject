@@ -26,8 +26,8 @@ function(err, data) {
     alert('Something went wrong: ' + err);
   } else {
     document.getElementById("entryamount").innerHTML = data.length;
-    document.getElementById("entryGenres").innerHTML = data."Genre";
-    console.log(data."Genre");
+    // document.getElementById("entryGenres").innerHTML = data.['Genre'];
+    console.log(data);
     return data;
   }
 });
