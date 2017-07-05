@@ -11,7 +11,7 @@ MONGODB_PORT = 27017
 DBS_NAME = 'movies'
 COLLECTION_NAME = 'projects'
 FIELDS = {
-    '_id': True,
+    '_id': False,
     'MovieName': True,
     'Genre': True
 }
@@ -27,6 +27,7 @@ def about():
 def overview():
     return render_template('overview.html')
 @app.route('/api/data/data.json')
+
 def apidata():
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DBS_NAME][COLLECTION_NAME]
@@ -37,6 +38,7 @@ def apidata():
     json_projects = json.dumps(json_projects, default=json_util.default)
     connection.close()
     return json_projects
+
 if __name__== '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     print "Server Running"

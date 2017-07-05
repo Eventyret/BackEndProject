@@ -1,33 +1,26 @@
-d3.json("/api/data/data.json", function(error, json) {
-    if (error) return console.log(error);
-    d3.select("#vis").append("svg")
-      .data(json)
-      .text(function(d){
-          return d.MovieName;
-      });
-});
-var getJSON = function(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-      var status = xhr.status;
-      if (status == 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status);
-      }
-    };
-    xhr.send();
-};
-getJSON('/api/data/data.json',
-function(err, data) {
-  if (err != null) {
-    alert('Something went wrong: ' + err);
-  } else {
-    document.getElementById("entryamount").innerHTML = data.length;
-    // document.getElementById("entryGenres").innerHTML = data.['Genre'];
-    console.log(data);
-    return data;
-  }
-});
+queue()
+.defer(d3.json, "/api/data/data.json")
+.await(makeGraphs);
+
+function makeGraphs(error, movieList) {
+       
+    var ndx = crossfilter(movieList);
+    var genreDim = ndx.dimension(function (movieRecord){
+        return movieRecord.Genre;
+    });
+    var moviesPerGenre = genreDim.group().reduceCount();
+
+    
+   var piechart = dc.pieChart("#pieChart");
+   piechart
+    .ordinalColors(["#F44336", "#3F51B5", "#2196F3", "#009688", "#FF5722", "#795548"])
+    .height(250)
+    .width(250)
+    .radius(125)
+    .innerRadius(40)
+    .transitionDuration(1500)
+    .dimension(genreDim)
+    .group(moviesPerGenre);
+
+  dc.renderAll(); 
+}

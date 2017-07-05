@@ -132,16 +132,3 @@ body {
 .panel-yellow > a:hover {
   color: #df8a13;
 }
-svg{
-    display: block;
-    margin: auto;
-}
-.chart rect {
-  fill: steelblue;
-}
-
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: middle;
-}
